@@ -6,7 +6,7 @@ import fragmentShader from './shaders/fragmentShader.glsl';
 import textureImg from './textures/pexels-frank-cone-2258536.jpg';
 import * as dat from 'lil-gui';
 
-const gui = new dat.GUI({width: 400});
+const gui = new dat.GUI({ width: 400 });
 
 /**
  * Sizes
@@ -30,7 +30,7 @@ const texture = textureLoader.load(textureImg);
 scene.background = texture;
 
 // Geometry
-const geometry = new THREE.PlaneGeometry(10, 10, 128, 128);
+const geometry = new THREE.PlaneGeometry(20, 20, 128, 128);
 
 //Color
 const colorObject = {};
@@ -69,7 +69,7 @@ gui.add(material.uniforms.uFrequency.value, 'y')
   .min(0).max(10).step(0.001).name('uFrequencyY');
 
 gui.add(material.uniforms.uWaveSpeed, 'value')
-  .min(0).max(6).step(0.001).name('uSpeed'); 
+  .min(0).max(6).step(0.001).name('uSpeed');
 
 gui.add(material.uniforms.uColorOffset, 'value')
   .min(0).max(1).step(0.001).name('uColorOffset');
@@ -78,13 +78,13 @@ gui.add(material.uniforms.uColorMultiplier, 'value')
   .min(0).max(10).step(0.001).name('uColorMultiplier');
 
 gui.add(material.uniforms.uSmallWaveElevation, 'value')
-  .min(0).max(1).step(0.0001).name('uSmallWaveElevation');  
- 
+  .min(0).max(1).step(0.0001).name('uSmallWaveElevation');
+
 gui.add(material.uniforms.uSmallWaveFrequency, 'value')
-  .min(0).max(30).step(0.001).name('uSmallWaveFrequency');  
+  .min(0).max(30).step(0.001).name('uSmallWaveFrequency');
 
 gui.add(material.uniforms.uSmallWaveSpeed, 'value')
-  .min(0).max(4).step(0.001).name('uSmallWaveSpeed');  
+  .min(0).max(4).step(0.001).name('uSmallWaveSpeed');
 
 gui.addColor(colorObject, 'surfaceColor').onChange(() => {
   material.uniforms.uSurfaceColor.value.set(colorObject.surfaceColor);
@@ -99,7 +99,7 @@ gui.addColor(colorObject, 'depthColor').onChange(() => {
 
 // gui.show(false);
 
-  
+
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
 mesh.rotation.x = Math.PI / 2;
@@ -142,9 +142,9 @@ const animate = () => {
   material.uniforms.uTime.value = elapsedTime;
 
   // camera.position.set(Math.sin(elapsedTime * 0.2), 0.7, Math.cos(elapsedTime  * 0.2));
-  camera.position.x = (Math.sin(elapsedTime  * 0.2)) * 3.0;
-  camera.position.z = (Math.cos(elapsedTime * 0.2)) * 3.0;
-  
+  camera.position.x = (Math.sin(elapsedTime * 0.2)) * 1.0;
+  camera.position.z = (Math.cos(elapsedTime * 0.2)) * 1.0;
+
   camera.lookAt(Math.cos(elapsedTime),
     Math.sin(elapsedTime) * 0.6,
     Math.sin(elapsedTime) * 0.4);
